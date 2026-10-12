@@ -18,9 +18,9 @@ The following suggestions proposed by AI assistants were actively **reviewed, ch
 ### Rejection 1: LLM-Based Goal Eligibility Classification
 - **AI Suggestion**: The assistant proposed sending the entire viewer history JSON to an LLM prompt with a prompt like: *"Determine if this user is eligible for Goal G01, G02, or G03 and return JSON."*
 - **Why It Was Rejected**:
-  1. **Hallucination Risk**: As highlighted in Section 6 ("The language model confidently states that a viewer is eligible for a goal without any supporting event"), LLMs frequently invent facts or claim eligibility on vibes rather than citations.
+  1. **Hallucination Risk**: Large language models frequently invent facts or assert eligibility without verified telemetry evidence. In an automated system, generated text must never be treated as proof or approval.
   2. **Latency Penalty**: An LLM call per trigger would add 500ms–2500ms of network overhead, risking the real-time SLA under peak load.
-  3. **Call Budget Depletion**: Violates the principle of frugality (using LLM calls only when reducing meaningful uncertainty).
+  3. **Call Budget Depletion**: Violates the principle of frugality (invoking models only when reducing meaningful uncertainty).
 - **Engineering Correction**: Implemented deterministic eligibility rules grounded strictly in provenanced events in `GoalCatalogue`, while restricting the LLM to strategic planning among *already-verified* eligible goals.
 
 ---
@@ -28,7 +28,7 @@ The following suggestions proposed by AI assistants were actively **reviewed, ch
 ### Rejection 2: Naive "Served vs. Unserved" Uplift Metric
 - **AI Suggestion**: In the evaluation module, the assistant generated a reporting script that calculated uplift by comparing `P(Conversion | Served)` against `P(Conversion | Unserved)`.
 - **Why It Was Rejected**:
-  - This is the fundamental **selection bias trap** called out in Section 9 of the brief. Active viewers open the app frequently and are vastly more likely to be served. Inactive or churned viewers never open the app and are dumped into the "unserved" bucket. Comparing them compares active users against dormant users, falsely claiming a +200% lift.
+  - This introduces severe **activity selection bias**. Active viewers open the app frequently and are vastly more likely to be served. Inactive or churned viewers never open the app and are dumped into the "unserved" bucket. Comparing them compares active users against dormant users, falsely claiming a +200% lift.
 - **Engineering Correction**: Replaced the entire metric pipeline with a **Randomized Intent-To-Treat (ITT)** evaluator. Viewers are partitioned into a 20% control holdout group upfront. Holdout viewers never receive active interventions (`DO_NOTHING`), providing an unconfounded baseline.
 
 ---

@@ -5,7 +5,7 @@
 [![P99 Latency](https://img.shields.io/badge/p99%20latency-3.1ms-success.svg)]()
 [![SLA Compliance](https://img.shields.io/badge/SLA%20Compliance-100%25-brightgreen.svg)]()
 
-Production-grade agentic system for regional-dialect streaming platforms. Built for the **Senior AI Engineer / Applied LLM Engineer** evaluation challenge.
+Production-grade autonomous lifecycle agent architecture for regional-dialect streaming platforms. Built with real-time decisioning, independent verification gates, and randomized causal holdout evaluation.
 
 ---
 
@@ -188,43 +188,3 @@ The agent planning engine proposes; the `VerificationGate` independently audits 
 Contrasts naive observational metrics against a **Randomized 20% Holdout Control Group**:
 - **Naive Comparison** (`Served vs. Unserved`): Misleadingly compares active app users with dormant non-openers, creating an artificial +248% selection bias artifact.
 - **Causal Intent-To-Treat (ITT)**: Measures the true population-level causal effect against the randomized holdout control group, supported by two-proportion Z-test p-values.
-
----
-
-## 5. Technical Discussion Guide (Answers to Section 10 Questions)
-
-#### Q1: How does your agent decide that what it knows about a viewer is current enough to act on?
-> **Answer**: Every fact stored in the viewer's state carries a `timestamp`, `source`, and computed `freshness_seconds`. Warehouse profile snapshots older than 48 hours are treated as stale; incoming `app_setting` sent with live telemetry takes precedence. Furthermore, offline buffered events older than 7 days are discarded as stale telemetry. If facts are contradictory or absent, the agent degrades to conservative fallbacks or chooses `DO_NOTHING`.
-
-#### Q2: When should the agent do nothing, and how do you know that was the right call?
-> **Answer**: `DO_NOTHING` (abstention) is a first-class, published decision executed when:
-> 1. The viewer belongs to the randomized control holdout group.
-> 2. No candidate goal has verified eligibility evidence.
-> 3. Outbound channels violate quiet hours (22:00–08:00 local time) or frequency caps (1 msg/day), and in-app catalog options are insufficient (< 3 titles in dialect).
-> 4. Uncertainty is high or external dependencies fail.
-> We know this was the right call because holdout baselines and abstention tracking show that unnecessary messages cause viewer churn and fatigue.
-
-#### Q3: How would you show that the agent caused a change rather than selecting viewers who were already likely to convert?
-> **Answer**: By strictly evaluating against the **Randomized 20% Holdout Group** using **Intent-to-Treat (ITT)**. Because holdout viewers are randomized upfront, their latent propensity to convert is identical to the treatment group. Comparing treatment conversion to holdout conversion isolates true causal uplift, eliminating the activity selection bias that artificially inflates "served vs unserved" comparisons.
-
-#### Q4: What happens when 1,000 viewers open the app in the same minute?
-> **Answer**: The decision loop has a **P99 latency of 3.1ms** and P50 of 1.2ms using an in-memory cached state store and compiled deterministic checks. An edge fleet of worker nodes partitioned by `viewer_id` hash can comfortably process 1,000 triggers/second without exceeding the 60-second SLA. If any dependency spikes in latency, circuit breakers trip and fall back to cached unpersonalized shelves in under 5ms.
-
-#### Q5: Which decisions should never be automated?
-> **Answer**: 
-> 1. Changes to safety policies, quiet hours windows, or legal consent status.
-> 2. Financial billing adjustments or permanent account bans.
-> 3. Modifying candidate goal definition criteria without human engineering review.
-
-#### Q6: How would the system work for 10 million viewers and 40 dialects?
-> **Answer**: 
-> - **Partitioning**: Consistent hashing of `viewer_id` across Apache Kafka partition keys guarantees that all events for a given viewer route to the same dedicated agent partition.
-> - **Storage**: Distributed **Redis Cluster** for active session hot state + **ScyllaDB / DynamoDB** for durable provenanced facts and historical outcomes.
-> - **Dialect Clustering**: Hierarchical tree (e.g. Hindi macro-family -> Bhojpuri/Maithili sub-dialects) with fallback paths when specific titles are unavailable in minor dialects.
-
-#### Q7: What did an AI coding assistant suggest that you chose not to accept?
-> **Answer**: Four major suggestions were rejected:
-> 1. LLM-based goal eligibility classification (rejected due to hallucination risks and latency).
-> 2. Naive "served vs unserved" uplift reporting (rejected due to severe activity selection bias).
-> 3. Inlining raw catalog descriptions into LLM prompts (rejected due to prompt injection vulnerabilities).
-> 4. Using client device timestamps for chronological event ordering (rejected due to unsynchronized device clocks).
