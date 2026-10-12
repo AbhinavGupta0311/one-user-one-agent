@@ -1,0 +1,114 @@
+{
+  "viewer_id": "V-3649",
+  "profile": {
+    "viewer_id": "V-3649",
+    "signup_date": "2026-08-21T10:00:00",
+    "subscription_status": "trial",
+    "preferred_dialect": "d6",
+    "preferred_language": "raj",
+    "timezone_offset_minutes": 330,
+    "push_consent": true,
+    "whatsapp_consent": false,
+    "is_holdout": false,
+    "version": 1,
+    "snapshot_date": "2026-08-30T23:59:59"
+  },
+  "active_goal": {
+    "id": "G01_first_full_episode_3d",
+    "deadline": "2026-08-18T12:00:00Z",
+    "rule_id": "G01-r1",
+    "success_signal": "play_complete_first_episode"
+  },
+  "active_plan_notes": null,
+  "provenance_facts": {},
+  "processed_event_ids": [
+    "E-001132"
+  ],
+  "processed_trigger_ids": [
+    "E-001132"
+  ],
+  "history_events": [],
+  "decisions": [
+    {
+      "decision_id": "D-D9890B",
+      "viewer_id": "V-3649",
+      "trigger": {
+        "event": "app_open",
+        "received_at": "2026-08-15T12:00:00Z",
+        "event_age_s": 1179762.0,
+        "trigger_id": "E-001132"
+      },
+      "goal": {
+        "id": "G01_first_full_episode_3d",
+        "deadline": "2026-08-18T12:00:00Z",
+        "rule_id": "G01-r1",
+        "success_signal": "play_complete_first_episode"
+      },
+      "action": "HOME_PAGE",
+      "dialect": {
+        "used": "d5",
+        "source": "app_setting",
+        "conflicts": [
+          "profile_snapshot:d6"
+        ],
+        "resolution_rule": "app_setting_precedence_over_warehouse"
+      },
+      "content": [
+        "title:T0008",
+        "title:T0013",
+        "title:T0019"
+      ],
+      "confidence": 0.78,
+      "confidence_reason": "Personalized home page shelf with 3 confirmed d5 titles aligns with G01_first_full_episode_3d",
+      "evidence": [
+        "event_count:play_complete=0",
+        "profile_status:trial",
+        "dialect_catalog_count:10",
+        "event:E-001132"
+      ],
+      "assumptions": [
+        "Viewer engages predominantly with dialect d5 on device"
+      ],
+      "checks": {
+        "passed": [
+          "action_validity",
+          "prompt_injection_safety",
+          "eligibility",
+          "consent",
+          "quiet_hours",
+          "frequency_cap",
+          "content_catalog_presence",
+          "dialect",
+          "row_constraints",
+          "duplicate_action"
+        ],
+        "failed": [],
+        "rejection_reasons": []
+      },
+      "decided_in_ms": 1.35,
+      "status": "PUBLISHED",
+      "abstain_reason": null,
+      "model_calls_used": 1,
+      "tool_calls_used": 5
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-916F10",
+      "decision_id": "D-D9890B",
+      "viewer_id": "V-3649",
+      "channel": "HOME_PAGE",
+      "executed_at": "2026-08-15T12:00:00",
+      "content_ids": [
+        "title:T0008",
+        "title:T0013",
+        "title:T0019"
+      ],
+      "dialect": "d5",
+      "status": "DELIVERED"
+    }
+  ],
+  "outcomes": [],
+  "learnings": [],
+  "last_updated": "2026-10-12T15:20:40.280228"
+}

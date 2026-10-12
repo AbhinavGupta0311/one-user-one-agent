@@ -1,0 +1,113 @@
+{
+  "viewer_id": "V-0988",
+  "profile": {
+    "viewer_id": "V-0988",
+    "signup_date": "2026-08-12T01:00:00",
+    "subscription_status": "trial",
+    "preferred_dialect": "d1",
+    "preferred_language": "raj",
+    "timezone_offset_minutes": 330,
+    "push_consent": true,
+    "whatsapp_consent": true,
+    "is_holdout": true,
+    "version": 1,
+    "snapshot_date": "2026-08-30T23:59:59"
+  },
+  "active_goal": null,
+  "active_plan_notes": null,
+  "provenance_facts": {},
+  "processed_event_ids": [
+    "E-000337",
+    "E-000216",
+    "E-000828"
+  ],
+  "processed_trigger_ids": [
+    "E-000337",
+    "E-000216"
+  ],
+  "history_events": [],
+  "decisions": [
+    {
+      "decision_id": "D-7F946F",
+      "viewer_id": "V-0988",
+      "trigger": {
+        "event": "app_open",
+        "received_at": "2026-08-15T12:00:00Z",
+        "event_age_s": 1238315.0,
+        "trigger_id": "E-000216"
+      },
+      "goal": null,
+      "action": "DO_NOTHING",
+      "dialect": {
+        "used": "control_baseline",
+        "source": "holdout_assignment",
+        "conflicts": [],
+        "resolution_rule": "freshness_and_precedence"
+      },
+      "content": [],
+      "confidence": 1.0,
+      "confidence_reason": "Viewer is member of randomized holdout control group for causal impact measurement",
+      "evidence": [
+        "experiment:randomized_holdout_control"
+      ],
+      "assumptions": [
+        "No intervention will be rendered; serves standard unpersonalized fallback"
+      ],
+      "checks": {
+        "passed": [
+          "holdout_protocol"
+        ],
+        "failed": [],
+        "rejection_reasons": []
+      },
+      "decided_in_ms": 1.75,
+      "status": "ABSTAINED",
+      "abstain_reason": "Holdout control group",
+      "model_calls_used": 0,
+      "tool_calls_used": 0
+    },
+    {
+      "decision_id": "D-D1A0ED",
+      "viewer_id": "V-0988",
+      "trigger": {
+        "event": "app_open",
+        "received_at": "2026-08-15T12:00:00Z",
+        "event_age_s": 1230593.0,
+        "trigger_id": "E-000337"
+      },
+      "goal": null,
+      "action": "DO_NOTHING",
+      "dialect": {
+        "used": "control_baseline",
+        "source": "holdout_assignment",
+        "conflicts": [],
+        "resolution_rule": "freshness_and_precedence"
+      },
+      "content": [],
+      "confidence": 1.0,
+      "confidence_reason": "Viewer is member of randomized holdout control group for causal impact measurement",
+      "evidence": [
+        "experiment:randomized_holdout_control"
+      ],
+      "assumptions": [
+        "No intervention will be rendered; serves standard unpersonalized fallback"
+      ],
+      "checks": {
+        "passed": [
+          "holdout_protocol"
+        ],
+        "failed": [],
+        "rejection_reasons": []
+      },
+      "decided_in_ms": 0.52,
+      "status": "ABSTAINED",
+      "abstain_reason": "Holdout control group",
+      "model_calls_used": 0,
+      "tool_calls_used": 0
+    }
+  ],
+  "actions": [],
+  "outcomes": [],
+  "learnings": [],
+  "last_updated": "2026-10-12T15:20:40.138221"
+}

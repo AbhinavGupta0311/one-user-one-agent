@@ -1,0 +1,21 @@
+{
+  "pilot_name": "Q2 Regional Lifecycle Re-engagement Pilot",
+  "description": "Historical pilot running baseline recommendation vs control holdout.",
+  "holdout_fraction": 0.2,
+  "sample_size": {
+    "total_viewers": 10000,
+    "treatment_assigned": 8000,
+    "holdout_control": 2000
+  },
+  "reported_metrics_naive": {
+    "served_conversion_rate": "42.8%",
+    "unserved_conversion_rate": "12.3%",
+    "reported_headline_uplift": "+248% (Flawed: contrasts served users with dormant non-openers!)"
+  },
+  "true_causal_itt_metrics": {
+    "treatment_intent_to_treat_conversion_rate": "23.4%",
+    "control_holdout_conversion_rate": "19.8%",
+    "true_causal_relative_uplift": "+18.18%",
+    "p_value": 0.002
+  }
+}

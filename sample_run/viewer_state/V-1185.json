@@ -1,0 +1,112 @@
+{
+  "viewer_id": "V-1185",
+  "profile": {
+    "viewer_id": "V-1185",
+    "signup_date": "2026-08-11T07:00:00",
+    "subscription_status": "trial",
+    "preferred_dialect": "d4",
+    "preferred_language": "chg",
+    "timezone_offset_minutes": 330,
+    "push_consent": true,
+    "whatsapp_consent": false,
+    "is_holdout": false,
+    "version": 1,
+    "snapshot_date": "2026-08-30T23:59:59"
+  },
+  "active_goal": {
+    "id": "G01_first_full_episode_3d",
+    "deadline": "2026-08-18T12:00:00Z",
+    "rule_id": "G01-r1",
+    "success_signal": "play_complete_first_episode"
+  },
+  "active_plan_notes": null,
+  "provenance_facts": {},
+  "processed_event_ids": [
+    "E-001071"
+  ],
+  "processed_trigger_ids": [
+    "E-001071"
+  ],
+  "history_events": [],
+  "decisions": [
+    {
+      "decision_id": "D-A98BF4",
+      "viewer_id": "V-1185",
+      "trigger": {
+        "event": "app_open",
+        "received_at": "2026-08-15T12:00:00Z",
+        "event_age_s": 1183640.0,
+        "trigger_id": "E-001071"
+      },
+      "goal": {
+        "id": "G01_first_full_episode_3d",
+        "deadline": "2026-08-18T12:00:00Z",
+        "rule_id": "G01-r1",
+        "success_signal": "play_complete_first_episode"
+      },
+      "action": "HOME_PAGE",
+      "dialect": {
+        "used": "d4",
+        "source": "app_setting",
+        "conflicts": [],
+        "resolution_rule": "unanimous_or_single_source"
+      },
+      "content": [
+        "title:T0006",
+        "title:T0008",
+        "title:T0011"
+      ],
+      "confidence": 0.78,
+      "confidence_reason": "Personalized home page shelf with 3 confirmed d4 titles aligns with G01_first_full_episode_3d",
+      "evidence": [
+        "event_count:play_complete=0",
+        "profile_status:trial",
+        "dialect_catalog_count:10",
+        "event:E-001071"
+      ],
+      "assumptions": [
+        "Viewer engages predominantly with dialect d4 on device"
+      ],
+      "checks": {
+        "passed": [
+          "action_validity",
+          "prompt_injection_safety",
+          "eligibility",
+          "consent",
+          "quiet_hours",
+          "frequency_cap",
+          "content_catalog_presence",
+          "dialect",
+          "row_constraints",
+          "duplicate_action"
+        ],
+        "failed": [],
+        "rejection_reasons": []
+      },
+      "decided_in_ms": 1.62,
+      "status": "PUBLISHED",
+      "abstain_reason": null,
+      "model_calls_used": 1,
+      "tool_calls_used": 5
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-7C5F3E",
+      "decision_id": "D-A98BF4",
+      "viewer_id": "V-1185",
+      "channel": "HOME_PAGE",
+      "executed_at": "2026-08-15T12:00:00",
+      "content_ids": [
+        "title:T0006",
+        "title:T0008",
+        "title:T0011"
+      ],
+      "dialect": "d4",
+      "status": "DELIVERED"
+    }
+  ],
+  "outcomes": [],
+  "learnings": [],
+  "last_updated": "2026-10-12T15:20:40.148237"
+}

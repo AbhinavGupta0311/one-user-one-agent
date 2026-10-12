@@ -1,0 +1,29 @@
+{
+  "viewer_id": "V-4571",
+  "profile": {
+    "viewer_id": "V-4571",
+    "signup_date": "2026-08-13T23:00:00",
+    "subscription_status": "anonymous",
+    "preferred_dialect": "d4",
+    "preferred_language": "raj",
+    "timezone_offset_minutes": 330,
+    "push_consent": false,
+    "whatsapp_consent": true,
+    "is_holdout": true,
+    "version": 1,
+    "snapshot_date": "2026-08-30T23:59:59"
+  },
+  "active_goal": null,
+  "active_plan_notes": null,
+  "provenance_facts": {},
+  "processed_event_ids": [
+    "E-000164"
+  ],
+  "processed_trigger_ids": [],
+  "history_events": [],
+  "decisions": [],
+  "actions": [],
+  "outcomes": [],
+  "learnings": [],
+  "last_updated": "2026-10-12T15:20:40.329032"
+}

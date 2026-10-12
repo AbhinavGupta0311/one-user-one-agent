@@ -1,0 +1,71 @@
+{
+  "viewer_id": "V-3083",
+  "profile": {
+    "viewer_id": "V-3083",
+    "signup_date": "2026-08-18T16:00:00",
+    "subscription_status": "anonymous",
+    "preferred_dialect": "d4",
+    "preferred_language": "hi",
+    "timezone_offset_minutes": 330,
+    "push_consent": false,
+    "whatsapp_consent": false,
+    "is_holdout": true,
+    "version": 1,
+    "snapshot_date": "2026-08-30T23:59:59"
+  },
+  "active_goal": null,
+  "active_plan_notes": null,
+  "provenance_facts": {},
+  "processed_event_ids": [
+    "E-002042"
+  ],
+  "processed_trigger_ids": [
+    "E-002042"
+  ],
+  "history_events": [],
+  "decisions": [
+    {
+      "decision_id": "D-4E8786",
+      "viewer_id": "V-3083",
+      "trigger": {
+        "event": "app_open",
+        "received_at": "2026-08-15T12:00:00Z",
+        "event_age_s": 1122212.0,
+        "trigger_id": "E-002042"
+      },
+      "goal": null,
+      "action": "DO_NOTHING",
+      "dialect": {
+        "used": "control_baseline",
+        "source": "holdout_assignment",
+        "conflicts": [],
+        "resolution_rule": "freshness_and_precedence"
+      },
+      "content": [],
+      "confidence": 1.0,
+      "confidence_reason": "Viewer is member of randomized holdout control group for causal impact measurement",
+      "evidence": [
+        "experiment:randomized_holdout_control"
+      ],
+      "assumptions": [
+        "No intervention will be rendered; serves standard unpersonalized fallback"
+      ],
+      "checks": {
+        "passed": [
+          "holdout_protocol"
+        ],
+        "failed": [],
+        "rejection_reasons": []
+      },
+      "decided_in_ms": 0.52,
+      "status": "ABSTAINED",
+      "abstain_reason": "Holdout control group",
+      "model_calls_used": 0,
+      "tool_calls_used": 0
+    }
+  ],
+  "actions": [],
+  "outcomes": [],
+  "learnings": [],
+  "last_updated": "2026-10-12T15:20:40.249471"
+}
